@@ -309,7 +309,7 @@ describe Puppet::Type.type(:gbigquery_table).provider(:google) do
                   table_reference             => {
                     dataset_id => 'test dataset_id#0 data',
                     table_id   => 'test table_id#0 data',
-                    projectid  => 'test projectid#0 data',
+                    project_id => 'test project_id#0 data',
                   },
                   time_partitioning           => {
                     expiration_ms => 2560001735,
@@ -576,7 +576,7 @@ describe Puppet::Type.type(:gbigquery_table).provider(:google) do
                   table_reference             => {
                     dataset_id => 'test dataset_id#1 data',
                     table_id   => 'test table_id#1 data',
-                    projectid  => 'test projectid#1 data',
+                    project_id => 'test project_id#1 data',
                   },
                   time_partitioning           => {
                     expiration_ms => 5120003470,
@@ -808,7 +808,7 @@ describe Puppet::Type.type(:gbigquery_table).provider(:google) do
                   table_reference             => {
                     dataset_id => 'test dataset_id#2 data',
                     table_id   => 'test table_id#2 data',
-                    projectid  => 'test projectid#2 data',
+                    project_id => 'test project_id#2 data',
                   },
                   time_partitioning           => {
                     expiration_ms => 7680005205,
@@ -865,6 +865,7 @@ describe Puppet::Type.type(:gbigquery_table).provider(:google) do
               # end
               it { is_expected.to have_attributes(last_modified_time: 2_728_042_666) }
               it { is_expected.to have_attributes(location: 'test location#0 data') }
+              it { is_expected.to have_attributes(name: 'title0') }
               it { is_expected.to have_attributes(num_bytes: 314_875_943) }
               it { is_expected.to have_attributes(num_long_term_bytes: 1_368_478_970) }
               it { is_expected.to have_attributes(num_rows: 2_780_205_378) }
@@ -915,6 +916,7 @@ describe Puppet::Type.type(:gbigquery_table).provider(:google) do
               # end
               it { is_expected.to have_attributes(last_modified_time: 5_456_085_333) }
               it { is_expected.to have_attributes(location: 'test location#1 data') }
+              it { is_expected.to have_attributes(name: 'title1') }
               it { is_expected.to have_attributes(num_bytes: 629_751_887) }
               it { is_expected.to have_attributes(num_long_term_bytes: 2_736_957_940) }
               it { is_expected.to have_attributes(num_rows: 5_560_410_757) }
@@ -965,6 +967,7 @@ describe Puppet::Type.type(:gbigquery_table).provider(:google) do
               # end
               it { is_expected.to have_attributes(last_modified_time: 8_184_128_000) }
               it { is_expected.to have_attributes(location: 'test location#2 data') }
+              it { is_expected.to have_attributes(name: 'title2') }
               it { is_expected.to have_attributes(num_bytes: 944_627_830) }
               it { is_expected.to have_attributes(num_long_term_bytes: 4_105_436_911) }
               it { is_expected.to have_attributes(num_rows: 8_340_616_136) }
@@ -1243,6 +1246,7 @@ describe Puppet::Type.type(:gbigquery_table).provider(:google) do
                     'test labels#1 data' => 'test labels#1 data',
                     'test labels#2 data' => 6131251034,
                   },
+                  name                        => 'test name#0 data',
                   schema                      => {
                     fields => [
                       {
@@ -1271,7 +1275,7 @@ describe Puppet::Type.type(:gbigquery_table).provider(:google) do
                   table_reference             => {
                     dataset_id => 'test dataset_id#0 data',
                     table_id   => 'test table_id#0 data',
-                    projectid  => 'test projectid#0 data',
+                    project_id => 'test project_id#0 data',
                   },
                   time_partitioning           => {
                     expiration_ms => 2560001735,
@@ -1503,6 +1507,7 @@ describe Puppet::Type.type(:gbigquery_table).provider(:google) do
                     'test labels#3 data' => 8175001379,
                     'test labels#4 data' => 'test labels#4 data',
                   },
+                  name                        => 'test name#1 data',
                   schema                      => {
                     fields => [
                       {
@@ -1538,7 +1543,7 @@ describe Puppet::Type.type(:gbigquery_table).provider(:google) do
                   table_reference             => {
                     dataset_id => 'test dataset_id#1 data',
                     table_id   => 'test table_id#1 data',
-                    projectid  => 'test projectid#1 data',
+                    project_id => 'test project_id#1 data',
                   },
                   time_partitioning           => {
                     expiration_ms => 5120003470,
@@ -1749,6 +1754,7 @@ describe Puppet::Type.type(:gbigquery_table).provider(:google) do
                     'test labels#5 data' => 'test labels#5 data',
                     'test labels#6 data' => 14306252413,
                   },
+                  name                        => 'test name#2 data',
                   schema                      => {
                     fields => [
                       {
@@ -1770,7 +1776,7 @@ describe Puppet::Type.type(:gbigquery_table).provider(:google) do
                   table_reference             => {
                     dataset_id => 'test dataset_id#2 data',
                     table_id   => 'test table_id#2 data',
-                    projectid  => 'test projectid#2 data',
+                    project_id => 'test project_id#2 data',
                   },
                   time_partitioning           => {
                     expiration_ms => 7680005205,
@@ -1827,6 +1833,7 @@ describe Puppet::Type.type(:gbigquery_table).provider(:google) do
               # end
               it { is_expected.to have_attributes(last_modified_time: 2_728_042_666) }
               it { is_expected.to have_attributes(location: 'test location#0 data') }
+              it { is_expected.to have_attributes(name: 'test name#0 data') }
               it { is_expected.to have_attributes(num_bytes: 314_875_943) }
               it { is_expected.to have_attributes(num_long_term_bytes: 1_368_478_970) }
               it { is_expected.to have_attributes(num_rows: 2_780_205_378) }
@@ -1877,6 +1884,7 @@ describe Puppet::Type.type(:gbigquery_table).provider(:google) do
               # end
               it { is_expected.to have_attributes(last_modified_time: 5_456_085_333) }
               it { is_expected.to have_attributes(location: 'test location#1 data') }
+              it { is_expected.to have_attributes(name: 'test name#1 data') }
               it { is_expected.to have_attributes(num_bytes: 629_751_887) }
               it { is_expected.to have_attributes(num_long_term_bytes: 2_736_957_940) }
               it { is_expected.to have_attributes(num_rows: 5_560_410_757) }
@@ -1927,6 +1935,7 @@ describe Puppet::Type.type(:gbigquery_table).provider(:google) do
               # end
               it { is_expected.to have_attributes(last_modified_time: 8_184_128_000) }
               it { is_expected.to have_attributes(location: 'test location#2 data') }
+              it { is_expected.to have_attributes(name: 'test name#2 data') }
               it { is_expected.to have_attributes(num_bytes: 944_627_830) }
               it { is_expected.to have_attributes(num_long_term_bytes: 4_105_436_911) }
               it { is_expected.to have_attributes(num_rows: 8_340_616_136) }
@@ -2011,79 +2020,45 @@ describe Puppet::Type.type(:gbigquery_table).provider(:google) do
             expect_network_get_failed 1, name: 'title0'
             expect_network_create \
               1,
-              'kind' => 'bigquery#table',
-              'tableReference' => {
-                'datasetId' => 'test dataset_id#0 data',
-                'projectid' => 'test projectid#0 data',
-                'tableId' => 'test table_id#0 data'
-              },
-              'description' => 'test description#0 data',
-              'friendlyName' => 'test friendly_name#0 data',
-              'labels' => {
-                'test labels#1 data' => 'test labels#1 data',
-                'test labels#2 data' => 6_131_251_034
-              },
-              'view' => {
-                'useLegacySql' => true,
-                'userDefinedFunctionResources' => [
-                  {
-                    'inlineCode' => 'test inline_code#0 data',
-                    'resourceUri' => 'test resource_uri#0 data'
-                  },
-                  {
-                    'inlineCode' => 'test inline_code#1 data',
-                    'resourceUri' => 'test resource_uri#1 data'
-                  },
-                  {
-                    'inlineCode' => 'test inline_code#2 data',
-                    'resourceUri' => 'test resource_uri#2 data'
-                  },
-                  {
-                    'inlineCode' => 'test inline_code#3 data',
-                    'resourceUri' => 'test resource_uri#3 data'
-                  }
-                ]
-              },
-              'timePartitioning' => {
-                'expirationMs' => 2_560_001_735,
-                'type' => 'DAY'
-              },
-              'schema' => {
-                'fields' => [
-                  {
-                    'description' => 'test description#0 data',
-                    'fields' => %w[tt uu vv],
-                    'mode' => 'NULLABLE',
-                    'name' => 'test name#0 data',
-                    'type' => 'STRING'
-                  },
-                  {
-                    'description' => 'test description#1 data',
-                    'fields' => %w[oo pp qq rr],
-                    'mode' => 'REQUIRED',
-                    'name' => 'test name#1 data',
-                    'type' => 'BYTES'
-                  },
-                  {
-                    'description' => 'test description#2 data',
-                    'fields' => %w[kk ll],
-                    'mode' => 'REPEATED',
-                    'name' => 'test name#2 data',
-                    'type' => 'INTEGER'
-                  }
-                ]
-              },
-              'encryptionConfiguration' => {
-                'kmsKeyName' => 'test kms_key_name#0 data'
-              },
-              'expirationTime' => 1_531_015_816,
-              'externalDataConfiguration' => {
-                'autodetect' => true,
-                'compression' => 'GZIP',
-                'ignoreUnknownValues' => true,
-                'maxBadRecords' => 0,
-                'sourceFormat' => 'CSV',
-                'sourceUris' => %w[bb cc dd],
+              {
+                'kind' => 'bigquery#table',
+                'tableReference' => {
+                  'datasetId' => 'test dataset_id#0 data',
+                  'projectId' => 'test project_id#0 data',
+                  'tableId' => 'test table_id#0 data'
+                },
+                'description' => 'test description#0 data',
+                'friendlyName' => 'test friendly_name#0 data',
+                'labels' => {
+                  'test labels#1 data' => 'test labels#1 data',
+                  'test labels#2 data' => 6_131_251_034
+                },
+                'name' => 'title0',
+                'view' => {
+                  'useLegacySql' => true,
+                  'userDefinedFunctionResources' => [
+                    {
+                      'inlineCode' => 'test inline_code#0 data',
+                      'resourceUri' => 'test resource_uri#0 data'
+                    },
+                    {
+                      'inlineCode' => 'test inline_code#1 data',
+                      'resourceUri' => 'test resource_uri#1 data'
+                    },
+                    {
+                      'inlineCode' => 'test inline_code#2 data',
+                      'resourceUri' => 'test resource_uri#2 data'
+                    },
+                    {
+                      'inlineCode' => 'test inline_code#3 data',
+                      'resourceUri' => 'test resource_uri#3 data'
+                    }
+                  ]
+                },
+                'timePartitioning' => {
+                  'expirationMs' => 2_560_001_735,
+                  'type' => 'DAY'
+                },
                 'schema' => {
                   'fields' => [
                     {
@@ -2109,183 +2084,221 @@ describe Puppet::Type.type(:gbigquery_table).provider(:google) do
                     }
                   ]
                 },
-                'googleSheetsOptions' => {
-                  'skipLeadingRows' => 0
+                'encryptionConfiguration' => {
+                  'kmsKeyName' => 'test kms_key_name#0 data'
                 },
-                'csvOptions' => {
-                  'allowJaggedRows' => true,
-                  'allowQuotedNewlines' => true,
-                  'encoding' => 'UTF-8',
-                  'fieldDelimiter' => 'test field_delimiter#0 data',
-                  'quote' => 'test quote#0 data',
-                  'skipLeadingRows' => 0
-                },
-                'bigtableOptions' => {
-                  'ignoreUnspecifiedColumnFamilies' => true,
-                  'readRowkeyAsString' => true,
-                  'columnFamilies' => [
-                    {
-                      'columns' => [
-                        {
-                          'encoding' => 'TEXT',
-                          'fieldName' => 'test field_name#0 data',
-                          'onlyReadLatest' => true,
-                          'qualifierString' => 'test qualifier_string#0 data',
-                          'type' => 'BYTES'
-                        },
-                        {
-                          'encoding' => 'BINARY',
-                          'fieldName' => 'test field_name#1 data',
-                          'onlyReadLatest' => false,
-                          'qualifierString' => 'test qualifier_string#1 data',
-                          'type' => 'STRING'
-                        },
-                        {
-                          'encoding' => 'TEXT',
-                          'fieldName' => 'test field_name#2 data',
-                          'onlyReadLatest' => true,
-                          'qualifierString' => 'test qualifier_string#2 data',
-                          'type' => 'INTEGER'
-                        }
-                      ],
-                      'encoding' => 'TEXT',
-                      'familyId' => 'test family_id#0 data',
-                      'onlyReadLatest' => true,
-                      'type' => 'BYTES'
-                    },
-                    {
-                      'columns' => [
-                        {
-                          'encoding' => 'BINARY',
-                          'fieldName' => 'test field_name#1 data',
-                          'onlyReadLatest' => false,
-                          'qualifierString' => 'test qualifier_string#1 data',
-                          'type' => 'STRING'
-                        },
-                        {
-                          'encoding' => 'TEXT',
-                          'fieldName' => 'test field_name#2 data',
-                          'onlyReadLatest' => true,
-                          'qualifierString' => 'test qualifier_string#2 data',
-                          'type' => 'INTEGER'
-                        },
-                        {
-                          'encoding' => 'BINARY',
-                          'fieldName' => 'test field_name#3 data',
-                          'onlyReadLatest' => false,
-                          'qualifierString' => 'test qualifier_string#3 data',
-                          'type' => 'FLOAT'
-                        },
-                        {
-                          'encoding' => 'TEXT',
-                          'fieldName' => 'test field_name#4 data',
-                          'onlyReadLatest' => true,
-                          'qualifierString' => 'test qualifier_string#4 data',
-                          'type' => 'BOOLEAN'
-                        }
-                      ],
-                      'encoding' => 'BINARY',
-                      'familyId' => 'test family_id#1 data',
-                      'onlyReadLatest' => false,
-                      'type' => 'STRING'
-                    },
-                    {
-                      'columns' => [
-                        {
-                          'encoding' => 'TEXT',
-                          'fieldName' => 'test field_name#2 data',
-                          'onlyReadLatest' => true,
-                          'qualifierString' => 'test qualifier_string#2 data',
-                          'type' => 'INTEGER'
-                        },
-                        {
-                          'encoding' => 'BINARY',
-                          'fieldName' => 'test field_name#3 data',
-                          'onlyReadLatest' => false,
-                          'qualifierString' => 'test qualifier_string#3 data',
-                          'type' => 'FLOAT'
-                        },
-                        {
-                          'encoding' => 'TEXT',
-                          'fieldName' => 'test field_name#4 data',
-                          'onlyReadLatest' => true,
-                          'qualifierString' => 'test qualifier_string#4 data',
-                          'type' => 'BOOLEAN'
-                        },
-                        {
-                          'encoding' => 'BINARY',
-                          'fieldName' => 'test field_name#5 data',
-                          'onlyReadLatest' => false,
-                          'qualifierString' => 'test qualifier_string#5 data',
-                          'type' => 'BYTES'
-                        },
-                        {
-                          'encoding' => 'TEXT',
-                          'fieldName' => 'test field_name#6 data',
-                          'onlyReadLatest' => true,
-                          'qualifierString' => 'test qualifier_string#6 data',
-                          'type' => 'STRING'
-                        }
-                      ],
-                      'encoding' => 'TEXT',
-                      'familyId' => 'test family_id#2 data',
-                      'onlyReadLatest' => true,
-                      'type' => 'INTEGER'
-                    },
-                    {
-                      'columns' => [
-                        {
-                          'encoding' => 'BINARY',
-                          'fieldName' => 'test field_name#3 data',
-                          'onlyReadLatest' => false,
-                          'qualifierString' => 'test qualifier_string#3 data',
-                          'type' => 'FLOAT'
-                        },
-                        {
-                          'encoding' => 'TEXT',
-                          'fieldName' => 'test field_name#4 data',
-                          'onlyReadLatest' => true,
-                          'qualifierString' => 'test qualifier_string#4 data',
-                          'type' => 'BOOLEAN'
-                        }
-                      ],
-                      'encoding' => 'BINARY',
-                      'familyId' => 'test family_id#3 data',
-                      'onlyReadLatest' => false,
-                      'type' => 'FLOAT'
-                    },
-                    {
-                      'columns' => [
-                        {
-                          'encoding' => 'TEXT',
-                          'fieldName' => 'test field_name#4 data',
-                          'onlyReadLatest' => true,
-                          'qualifierString' => 'test qualifier_string#4 data',
-                          'type' => 'BOOLEAN'
-                        },
-                        {
-                          'encoding' => 'BINARY',
-                          'fieldName' => 'test field_name#5 data',
-                          'onlyReadLatest' => false,
-                          'qualifierString' => 'test qualifier_string#5 data',
-                          'type' => 'BYTES'
-                        },
-                        {
-                          'encoding' => 'TEXT',
-                          'fieldName' => 'test field_name#6 data',
-                          'onlyReadLatest' => true,
-                          'qualifierString' => 'test qualifier_string#6 data',
-                          'type' => 'STRING'
-                        }
-                      ],
-                      'encoding' => 'TEXT',
-                      'familyId' => 'test family_id#4 data',
-                      'onlyReadLatest' => true,
-                      'type' => 'BOOLEAN'
-                    }
-                  ]
+                'expirationTime' => 1_531_015_816,
+                'externalDataConfiguration' => {
+                  'autodetect' => true,
+                  'compression' => 'GZIP',
+                  'ignoreUnknownValues' => true,
+                  'maxBadRecords' => 0,
+                  'sourceFormat' => 'CSV',
+                  'sourceUris' => %w[bb cc dd],
+                  'schema' => {
+                    'fields' => [
+                      {
+                        'description' => 'test description#0 data',
+                        'fields' => %w[tt uu vv],
+                        'mode' => 'NULLABLE',
+                        'name' => 'test name#0 data',
+                        'type' => 'STRING'
+                      },
+                      {
+                        'description' => 'test description#1 data',
+                        'fields' => %w[oo pp qq rr],
+                        'mode' => 'REQUIRED',
+                        'name' => 'test name#1 data',
+                        'type' => 'BYTES'
+                      },
+                      {
+                        'description' => 'test description#2 data',
+                        'fields' => %w[kk ll],
+                        'mode' => 'REPEATED',
+                        'name' => 'test name#2 data',
+                        'type' => 'INTEGER'
+                      }
+                    ]
+                  },
+                  'googleSheetsOptions' => {
+                    'skipLeadingRows' => 0
+                  },
+                  'csvOptions' => {
+                    'allowJaggedRows' => true,
+                    'allowQuotedNewlines' => true,
+                    'encoding' => 'UTF-8',
+                    'fieldDelimiter' => 'test field_delimiter#0 data',
+                    'quote' => 'test quote#0 data',
+                    'skipLeadingRows' => 0
+                  },
+                  'bigtableOptions' => {
+                    'ignoreUnspecifiedColumnFamilies' => true,
+                    'readRowkeyAsString' => true,
+                    'columnFamilies' => [
+                      {
+                        'columns' => [
+                          {
+                            'encoding' => 'TEXT',
+                            'fieldName' => 'test field_name#0 data',
+                            'onlyReadLatest' => true,
+                            'qualifierString' => 'test qualifier_string#0 data',
+                            'type' => 'BYTES'
+                          },
+                          {
+                            'encoding' => 'BINARY',
+                            'fieldName' => 'test field_name#1 data',
+                            'onlyReadLatest' => false,
+                            'qualifierString' => 'test qualifier_string#1 data',
+                            'type' => 'STRING'
+                          },
+                          {
+                            'encoding' => 'TEXT',
+                            'fieldName' => 'test field_name#2 data',
+                            'onlyReadLatest' => true,
+                            'qualifierString' => 'test qualifier_string#2 data',
+                            'type' => 'INTEGER'
+                          }
+                        ],
+                        'encoding' => 'TEXT',
+                        'familyId' => 'test family_id#0 data',
+                        'onlyReadLatest' => true,
+                        'type' => 'BYTES'
+                      },
+                      {
+                        'columns' => [
+                          {
+                            'encoding' => 'BINARY',
+                            'fieldName' => 'test field_name#1 data',
+                            'onlyReadLatest' => false,
+                            'qualifierString' => 'test qualifier_string#1 data',
+                            'type' => 'STRING'
+                          },
+                          {
+                            'encoding' => 'TEXT',
+                            'fieldName' => 'test field_name#2 data',
+                            'onlyReadLatest' => true,
+                            'qualifierString' => 'test qualifier_string#2 data',
+                            'type' => 'INTEGER'
+                          },
+                          {
+                            'encoding' => 'BINARY',
+                            'fieldName' => 'test field_name#3 data',
+                            'onlyReadLatest' => false,
+                            'qualifierString' => 'test qualifier_string#3 data',
+                            'type' => 'FLOAT'
+                          },
+                          {
+                            'encoding' => 'TEXT',
+                            'fieldName' => 'test field_name#4 data',
+                            'onlyReadLatest' => true,
+                            'qualifierString' => 'test qualifier_string#4 data',
+                            'type' => 'BOOLEAN'
+                          }
+                        ],
+                        'encoding' => 'BINARY',
+                        'familyId' => 'test family_id#1 data',
+                        'onlyReadLatest' => false,
+                        'type' => 'STRING'
+                      },
+                      {
+                        'columns' => [
+                          {
+                            'encoding' => 'TEXT',
+                            'fieldName' => 'test field_name#2 data',
+                            'onlyReadLatest' => true,
+                            'qualifierString' => 'test qualifier_string#2 data',
+                            'type' => 'INTEGER'
+                          },
+                          {
+                            'encoding' => 'BINARY',
+                            'fieldName' => 'test field_name#3 data',
+                            'onlyReadLatest' => false,
+                            'qualifierString' => 'test qualifier_string#3 data',
+                            'type' => 'FLOAT'
+                          },
+                          {
+                            'encoding' => 'TEXT',
+                            'fieldName' => 'test field_name#4 data',
+                            'onlyReadLatest' => true,
+                            'qualifierString' => 'test qualifier_string#4 data',
+                            'type' => 'BOOLEAN'
+                          },
+                          {
+                            'encoding' => 'BINARY',
+                            'fieldName' => 'test field_name#5 data',
+                            'onlyReadLatest' => false,
+                            'qualifierString' => 'test qualifier_string#5 data',
+                            'type' => 'BYTES'
+                          },
+                          {
+                            'encoding' => 'TEXT',
+                            'fieldName' => 'test field_name#6 data',
+                            'onlyReadLatest' => true,
+                            'qualifierString' => 'test qualifier_string#6 data',
+                            'type' => 'STRING'
+                          }
+                        ],
+                        'encoding' => 'TEXT',
+                        'familyId' => 'test family_id#2 data',
+                        'onlyReadLatest' => true,
+                        'type' => 'INTEGER'
+                      },
+                      {
+                        'columns' => [
+                          {
+                            'encoding' => 'BINARY',
+                            'fieldName' => 'test field_name#3 data',
+                            'onlyReadLatest' => false,
+                            'qualifierString' => 'test qualifier_string#3 data',
+                            'type' => 'FLOAT'
+                          },
+                          {
+                            'encoding' => 'TEXT',
+                            'fieldName' => 'test field_name#4 data',
+                            'onlyReadLatest' => true,
+                            'qualifierString' => 'test qualifier_string#4 data',
+                            'type' => 'BOOLEAN'
+                          }
+                        ],
+                        'encoding' => 'BINARY',
+                        'familyId' => 'test family_id#3 data',
+                        'onlyReadLatest' => false,
+                        'type' => 'FLOAT'
+                      },
+                      {
+                        'columns' => [
+                          {
+                            'encoding' => 'TEXT',
+                            'fieldName' => 'test field_name#4 data',
+                            'onlyReadLatest' => true,
+                            'qualifierString' => 'test qualifier_string#4 data',
+                            'type' => 'BOOLEAN'
+                          },
+                          {
+                            'encoding' => 'BINARY',
+                            'fieldName' => 'test field_name#5 data',
+                            'onlyReadLatest' => false,
+                            'qualifierString' => 'test qualifier_string#5 data',
+                            'type' => 'BYTES'
+                          },
+                          {
+                            'encoding' => 'TEXT',
+                            'fieldName' => 'test field_name#6 data',
+                            'onlyReadLatest' => true,
+                            'qualifierString' => 'test qualifier_string#6 data',
+                            'type' => 'STRING'
+                          }
+                        ],
+                        'encoding' => 'TEXT',
+                        'familyId' => 'test family_id#4 data',
+                        'onlyReadLatest' => true,
+                        'type' => 'BOOLEAN'
+                      }
+                    ]
+                  }
                 }
-              }
+              },
+              name: 'title0'
           end
 
           subject do
@@ -2541,7 +2554,7 @@ describe Puppet::Type.type(:gbigquery_table).provider(:google) do
                 table_reference             => {
                   dataset_id => 'test dataset_id#0 data',
                   table_id   => 'test table_id#0 data',
-                  projectid  => 'test projectid#0 data',
+                  project_id => 'test project_id#0 data',
                 },
                 time_partitioning           => {
                   expiration_ms => 2560001735,
@@ -2597,7 +2610,7 @@ describe Puppet::Type.type(:gbigquery_table).provider(:google) do
               'kind' => 'bigquery#table',
               'tableReference' => {
                 'datasetId' => 'test dataset_id#0 data',
-                'projectid' => 'test projectid#0 data',
+                'projectId' => 'test project_id#0 data',
                 'tableId' => 'test table_id#0 data'
               },
               'description' => 'test description#0 data',
@@ -2606,6 +2619,7 @@ describe Puppet::Type.type(:gbigquery_table).provider(:google) do
                 'test labels#1 data' => 'test labels#1 data',
                 'test labels#2 data' => 6_131_251_034
               },
+              'name' => 'test name#0 data',
               'view' => {
                 'useLegacySql' => true,
                 'userDefinedFunctionResources' => [
@@ -3096,6 +3110,7 @@ describe Puppet::Type.type(:gbigquery_table).provider(:google) do
                   'test labels#1 data' => 'test labels#1 data',
                   'test labels#2 data' => 6131251034,
                 },
+                name                        => 'test name#0 data',
                 schema                      => {
                   fields => [
                     {
@@ -3124,7 +3139,7 @@ describe Puppet::Type.type(:gbigquery_table).provider(:google) do
                 table_reference             => {
                   dataset_id => 'test dataset_id#0 data',
                   table_id   => 'test table_id#0 data',
-                  projectid  => 'test projectid#0 data',
+                  project_id => 'test project_id#0 data',
                 },
                 time_partitioning           => {
                   expiration_ms => 2560001735,
@@ -3218,6 +3233,7 @@ describe Puppet::Type.type(:gbigquery_table).provider(:google) do
               <<-MANIFEST
               gbigquery_table { 'title0':
                 ensure     => absent,
+                name       => 'test name#0 data',
                 project    => 'test project#0 data',
                 credential => 'cred0',
               }
@@ -3286,6 +3302,7 @@ describe Puppet::Type.type(:gbigquery_table).provider(:google) do
               <<-MANIFEST
               gbigquery_table { 'title0':
                 ensure     => absent,
+                name       => 'test name#0 data',
                 project    => 'test project#0 data',
                 credential => 'cred0',
               }

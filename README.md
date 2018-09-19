@@ -371,6 +371,7 @@ gbigquery_table { 'id-of-resource':
   labels                      => namevalues,
   last_modified_time          => integer,
   location                    => string,
+  name                        => string,
   num_bytes                   => integer,
   num_long_term_bytes         => integer,
   num_rows                    => integer,
@@ -397,7 +398,7 @@ gbigquery_table { 'id-of-resource':
   table_reference             => {
     dataset_id => string,
     table_id   => string,
-    projectid  => string,
+    project_id => string,
   },
   time_partitioning           => {
     expiration_ms => integer,
@@ -426,7 +427,7 @@ gbigquery_table { 'id-of-resource':
 ##### table_reference/dataset_id
   The ID of the dataset containing this table
 
-##### table_reference/projectid
+##### table_reference/project_id
   The ID of the project containing this table
 
 ##### table_reference/table_id
@@ -443,6 +444,10 @@ gbigquery_table { 'id-of-resource':
 ##### `labels`
 
   The labels associated with this dataset. You can use these to organize and group your datasets
+
+##### `name`
+
+  Name of the table
 
 ##### `view`
 

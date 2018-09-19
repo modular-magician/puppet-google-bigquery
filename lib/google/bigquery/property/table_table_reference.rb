@@ -35,13 +35,13 @@ module Google
         include Comparable
 
         attr_reader :dataset_id
-        attr_reader :projectid
+        attr_reader :project_id
         attr_reader :table_id
 
         def to_json(_arg = nil)
           {
             'datasetId' => dataset_id,
-            'projectid' => projectid,
+            'projectId' => project_id,
             'tableId' => table_id
           }.reject { |_k, v| v.nil? }.to_json
         end
@@ -49,7 +49,7 @@ module Google
         def to_s
           {
             dataset_id: dataset_id,
-            projectid: projectid,
+            project_id: project_id,
             table_id: table_id
           }.reject { |_k, v| v.nil? }.map { |k, v| "#{k}: #{v}" }.join(', ')
         end
@@ -78,7 +78,7 @@ module Google
         def compare_fields(other)
           [
             { self: dataset_id, other: other.dataset_id },
-            { self: projectid, other: other.projectid },
+            { self: project_id, other: other.project_id },
             { self: table_id, other: other.table_id }
           ]
         end
@@ -89,7 +89,7 @@ module Google
       class TableTableReferenceApi < TableTableReference
         def initialize(args)
           @dataset_id = Google::Bigquery::Property::String.api_munge(args['datasetId'])
-          @projectid = Google::Bigquery::Property::String.api_munge(args['projectid'])
+          @project_id = Google::Bigquery::Property::String.api_munge(args['projectId'])
           @table_id = Google::Bigquery::Property::String.api_munge(args['tableId'])
         end
       end
@@ -99,7 +99,7 @@ module Google
       class TableTableReferenceCatalog < TableTableReference
         def initialize(args)
           @dataset_id = Google::Bigquery::Property::String.unsafe_munge(args['dataset_id'])
-          @projectid = Google::Bigquery::Property::String.unsafe_munge(args['projectid'])
+          @project_id = Google::Bigquery::Property::String.unsafe_munge(args['project_id'])
           @table_id = Google::Bigquery::Property::String.unsafe_munge(args['table_id'])
         end
       end

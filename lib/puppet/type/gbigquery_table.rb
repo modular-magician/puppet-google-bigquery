@@ -118,6 +118,10 @@ Puppet::Type.newtype(:gbigquery_table) do
     DOC
   end
 
+  newproperty(:name, parent: Google::Bigquery::Property::String) do
+    desc 'Name of the table'
+  end
+
   newproperty(:num_bytes, parent: Google::Bigquery::Property::Integer) do
     desc <<-DOC
       The size of this table in bytes, excluding any data in the streaming buffer. (output only)

@@ -236,7 +236,7 @@ streamingBuffer:
   oldestEntryTime: 1664941846
 tableReference:
   datasetId: test dataset_id#0 data
-  projectid: test projectid#0 data
+  projectId: test project_id#0 data
   tableId: test table_id#0 data
 timePartitioning:
   expirationMs: 2560001735
