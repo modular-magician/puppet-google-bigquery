@@ -38,9 +38,23 @@ Puppet::Type.newtype(:gbigquery_dataset) do
   @doc = 'Datasets allow you to organize and control access to your tables.'
 
   autorequire(:gauth_credential) do
-    credential = self[:credential]
-    raise "#{ref}: required property 'credential' is missing" if credential.nil?
-    [credential]
+    if self[:ensure] == :present
+      credential = self[:credential]
+      raise "#{ref}: required property 'credential' is missing" if credential.nil?
+      [credential]
+    else
+      []
+    end
+  end
+
+  autobefore(:gauth_credential) do
+    if self[:ensure] == :absent
+      credential = self[:credential]
+      raise "#{ref}: required property 'credential' is missing" if credential.nil?
+      [credential]
+    else
+      []
+    end
   end
 
   ensurable
