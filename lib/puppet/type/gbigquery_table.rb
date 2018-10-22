@@ -78,7 +78,7 @@ Puppet::Type.newtype(:gbigquery_table) do
     desc 'Name of the dataset'
   end
 
-  newproperty(:table_reference, parent: Google::Bigquery::Property::TableTableReference) do
+  newproperty(:table_reference, parent: Google::Bigquery::Property::TableTablereference) do
     desc 'Reference describing the ID of this table'
   end
 
@@ -146,11 +146,11 @@ Puppet::Type.newtype(:gbigquery_table) do
     desc 'The view definition.'
   end
 
-  newproperty(:time_partitioning, parent: Google::Bigquery::Property::TableTimePartitioning) do
+  newproperty(:time_partitioning, parent: Google::Bigquery::Property::TableTimepartitioning) do
     desc 'If specified, configures time-based partitioning for this table.'
   end
 
-  newproperty(:streaming_buffer, parent: Google::Bigquery::Property::TableStreamingBuffer) do
+  newproperty(:streaming_buffer, parent: Google::Bigquery::Property::TableStreamingbuffer) do
     desc <<-DOC
       Contains information regarding this table's streaming buffer, if one is present. This field
       will be absent if the table is not being streamed to or if there is no data in the streaming
@@ -163,7 +163,7 @@ Puppet::Type.newtype(:gbigquery_table) do
   end
 
   newproperty(:encryption_configuration,
-              parent: Google::Bigquery::Property::TableEncryptionConfiguration) do
+              parent: Google::Bigquery::Property::TableEncryptionconfiguration) do
     desc 'Custom encryption configuration'
   end
 
@@ -175,7 +175,7 @@ Puppet::Type.newtype(:gbigquery_table) do
   end
 
   newproperty(:external_data_configuration,
-              parent: Google::Bigquery::Property::TableExternalDataConfiguration) do
+              parent: Google::Bigquery::Property::TableExternaldataconfiguration) do
     desc <<-DOC
       Describes the data format, location, and other properties of a table stored outside of
       BigQuery. By defining these properties, the data source can then be queried as if it were a

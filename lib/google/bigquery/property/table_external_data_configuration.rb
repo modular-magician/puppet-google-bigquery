@@ -31,7 +31,7 @@ module Google
   module Bigquery
     module Data
       # A class to manage data for ExternalDataConfiguration for table.
-      class TableExternalDataConfiguration
+      class TableExternaldataconfiguration
         include Comparable
 
         attr_reader :autodetect
@@ -76,7 +76,7 @@ module Google
         end
 
         def ==(other)
-          return false unless other.is_a? TableExternalDataConfiguration
+          return false unless other.is_a? TableExternaldataconfiguration
           compare_fields(other).each do |compare|
             next if compare[:self].nil? || compare[:other].nil?
             return false if compare[:self] != compare[:other]
@@ -85,7 +85,7 @@ module Google
         end
 
         def <=>(other)
-          return false unless other.is_a? TableExternalDataConfiguration
+          return false unless other.is_a? TableExternaldataconfiguration
           compare_fields(other).each do |compare|
             next if compare[:self].nil? || compare[:other].nil?
             result = compare[:self] <=> compare[:other]
@@ -112,9 +112,9 @@ module Google
         end
       end
 
-      # Manages a TableExternalDataConfiguration nested object
+      # Manages a TableExternaldataconfiguration nested object
       # Data is coming from the GCP API
-      class TableExternalDataConfigurationApi < TableExternalDataConfiguration
+      class TableExternaldataconfigurationApi < TableExternaldataconfiguration
         def initialize(args)
           @autodetect = Google::Bigquery::Property::Boolean.api_munge(args['autodetect'])
           @compression = Google::Bigquery::Property::Enum.api_munge(args['compression'])
@@ -124,18 +124,18 @@ module Google
           @source_format = Google::Bigquery::Property::Enum.api_munge(args['sourceFormat'])
           @source_uris = Google::Bigquery::Property::StringArray.api_munge(args['sourceUris'])
           @schema = Google::Bigquery::Property::TableSchema.api_munge(args['schema'])
-          @google_sheets_options = Google::Bigquery::Property::TableGoogleSheetsOptions.api_munge(
+          @google_sheets_options = Google::Bigquery::Property::TableGooglesheetsoptions.api_munge(
             args['googleSheetsOptions']
           )
-          @csv_options = Google::Bigquery::Property::TableCsvOptions.api_munge(args['csvOptions'])
+          @csv_options = Google::Bigquery::Property::TableCsvoptions.api_munge(args['csvOptions'])
           @bigtable_options =
-            Google::Bigquery::Property::TableBigtableOptions.api_munge(args['bigtableOptions'])
+            Google::Bigquery::Property::TableBigtableoptions.api_munge(args['bigtableOptions'])
         end
       end
 
-      # Manages a TableExternalDataConfiguration nested object
+      # Manages a TableExternaldataconfiguration nested object
       # Data is coming from the Puppet manifest
-      class TableExternalDataConfigurationCatalog < TableExternalDataConfiguration
+      class TableExternaldataconfigurationCatalog < TableExternaldataconfiguration
         def initialize(args)
           @autodetect = Google::Bigquery::Property::Boolean.unsafe_munge(args['autodetect'])
           @compression = Google::Bigquery::Property::Enum.unsafe_munge(args['compression'])
@@ -147,20 +147,20 @@ module Google
           @source_uris = Google::Bigquery::Property::StringArray.unsafe_munge(args['source_uris'])
           @schema = Google::Bigquery::Property::TableSchema.unsafe_munge(args['schema'])
           @google_sheets_options =
-            Google::Bigquery::Property::TableGoogleSheetsOptions.unsafe_munge(
+            Google::Bigquery::Property::TableGooglesheetsoptions.unsafe_munge(
               args['google_sheets_options']
             )
           @csv_options =
-            Google::Bigquery::Property::TableCsvOptions.unsafe_munge(args['csv_options'])
+            Google::Bigquery::Property::TableCsvoptions.unsafe_munge(args['csv_options'])
           @bigtable_options =
-            Google::Bigquery::Property::TableBigtableOptions.unsafe_munge(args['bigtable_options'])
+            Google::Bigquery::Property::TableBigtableoptions.unsafe_munge(args['bigtable_options'])
         end
       end
     end
 
     module Property
       # A class to manage input to ExternalDataConfiguration for table.
-      class TableExternalDataConfiguration < Google::Bigquery::Property::Base
+      class TableExternaldataconfiguration < Google::Bigquery::Property::Base
         # Used for parsing Puppet catalog
         def unsafe_munge(value)
           self.class.unsafe_munge(value)
@@ -169,13 +169,13 @@ module Google
         # Used for parsing Puppet catalog
         def self.unsafe_munge(value)
           return if value.nil?
-          Data::TableExternalDataConfigurationCatalog.new(value)
+          Data::TableExternaldataconfigurationCatalog.new(value)
         end
 
         # Used for parsing GCP API responses
         def self.api_munge(value)
           return if value.nil?
-          Data::TableExternalDataConfigurationApi.new(value)
+          Data::TableExternaldataconfigurationApi.new(value)
         end
       end
     end

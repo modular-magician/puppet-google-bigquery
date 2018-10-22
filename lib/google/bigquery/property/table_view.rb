@@ -88,7 +88,7 @@ module Google
         def initialize(args)
           @use_legacy_sql = Google::Bigquery::Property::Boolean.api_munge(args['useLegacySql'])
           @user_defined_function_resources =
-            Google::Bigquery::Property::TableUserDefinedFunctionResourcesArray.api_munge(
+            Google::Bigquery::Property::TableUserdefinedfunctionresourcesArray.api_munge(
               args['userDefinedFunctionResources']
             )
         end
@@ -100,7 +100,7 @@ module Google
         def initialize(args)
           @use_legacy_sql = Google::Bigquery::Property::Boolean.unsafe_munge(args['use_legacy_sql'])
           @user_defined_function_resources =
-            Google::Bigquery::Property::TableUserDefinedFunctionResourcesArray.unsafe_munge(
+            Google::Bigquery::Property::TableUserdefinedfunctionresourcesArray.unsafe_munge(
               args['user_defined_function_resources']
             )
         end

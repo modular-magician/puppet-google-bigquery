@@ -31,7 +31,7 @@ module Google
   module Bigquery
     module Data
       # A class to manage data for TimePartitioning for table.
-      class TableTimePartitioning
+      class TableTimepartitioning
         include Comparable
 
         attr_reader :expiration_ms
@@ -52,7 +52,7 @@ module Google
         end
 
         def ==(other)
-          return false unless other.is_a? TableTimePartitioning
+          return false unless other.is_a? TableTimepartitioning
           compare_fields(other).each do |compare|
             next if compare[:self].nil? || compare[:other].nil?
             return false if compare[:self] != compare[:other]
@@ -61,7 +61,7 @@ module Google
         end
 
         def <=>(other)
-          return false unless other.is_a? TableTimePartitioning
+          return false unless other.is_a? TableTimepartitioning
           compare_fields(other).each do |compare|
             next if compare[:self].nil? || compare[:other].nil?
             result = compare[:self] <=> compare[:other]
@@ -80,18 +80,18 @@ module Google
         end
       end
 
-      # Manages a TableTimePartitioning nested object
+      # Manages a TableTimepartitioning nested object
       # Data is coming from the GCP API
-      class TableTimePartitioningApi < TableTimePartitioning
+      class TableTimepartitioningApi < TableTimepartitioning
         def initialize(args)
           @expiration_ms = Google::Bigquery::Property::Integer.api_munge(args['expirationMs'])
           @type = Google::Bigquery::Property::Enum.api_munge(args['type'])
         end
       end
 
-      # Manages a TableTimePartitioning nested object
+      # Manages a TableTimepartitioning nested object
       # Data is coming from the Puppet manifest
-      class TableTimePartitioningCatalog < TableTimePartitioning
+      class TableTimepartitioningCatalog < TableTimepartitioning
         def initialize(args)
           @expiration_ms = Google::Bigquery::Property::Integer.unsafe_munge(args['expiration_ms'])
           @type = Google::Bigquery::Property::Enum.unsafe_munge(args['type'])
@@ -101,7 +101,7 @@ module Google
 
     module Property
       # A class to manage input to TimePartitioning for table.
-      class TableTimePartitioning < Google::Bigquery::Property::Base
+      class TableTimepartitioning < Google::Bigquery::Property::Base
         # Used for parsing Puppet catalog
         def unsafe_munge(value)
           self.class.unsafe_munge(value)
@@ -110,13 +110,13 @@ module Google
         # Used for parsing Puppet catalog
         def self.unsafe_munge(value)
           return if value.nil?
-          Data::TableTimePartitioningCatalog.new(value)
+          Data::TableTimepartitioningCatalog.new(value)
         end
 
         # Used for parsing GCP API responses
         def self.api_munge(value)
           return if value.nil?
-          Data::TableTimePartitioningApi.new(value)
+          Data::TableTimepartitioningApi.new(value)
         end
       end
     end
