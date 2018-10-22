@@ -31,7 +31,7 @@ module Google
   module Bigquery
     module Data
       # A class to manage data for StreamingBuffer for table.
-      class TableStreamingBuffer
+      class TableStreamingbuffer
         include Comparable
 
         attr_reader :estimated_bytes
@@ -55,7 +55,7 @@ module Google
         end
 
         def ==(other)
-          return false unless other.is_a? TableStreamingBuffer
+          return false unless other.is_a? TableStreamingbuffer
           compare_fields(other).each do |compare|
             next if compare[:self].nil? || compare[:other].nil?
             return false if compare[:self] != compare[:other]
@@ -64,7 +64,7 @@ module Google
         end
 
         def <=>(other)
-          return false unless other.is_a? TableStreamingBuffer
+          return false unless other.is_a? TableStreamingbuffer
           compare_fields(other).each do |compare|
             next if compare[:self].nil? || compare[:other].nil?
             result = compare[:self] <=> compare[:other]
@@ -84,9 +84,9 @@ module Google
         end
       end
 
-      # Manages a TableStreamingBuffer nested object
+      # Manages a TableStreamingbuffer nested object
       # Data is coming from the GCP API
-      class TableStreamingBufferApi < TableStreamingBuffer
+      class TableStreamingbufferApi < TableStreamingbuffer
         def initialize(args)
           @estimated_bytes = Google::Bigquery::Property::Integer.api_munge(args['estimatedBytes'])
           @estimated_rows = Google::Bigquery::Property::Integer.api_munge(args['estimatedRows'])
@@ -95,9 +95,9 @@ module Google
         end
       end
 
-      # Manages a TableStreamingBuffer nested object
+      # Manages a TableStreamingbuffer nested object
       # Data is coming from the Puppet manifest
-      class TableStreamingBufferCatalog < TableStreamingBuffer
+      class TableStreamingbufferCatalog < TableStreamingbuffer
         def initialize(args)
           @estimated_bytes =
             Google::Bigquery::Property::Integer.unsafe_munge(args['estimated_bytes'])
@@ -110,7 +110,7 @@ module Google
 
     module Property
       # A class to manage input to StreamingBuffer for table.
-      class TableStreamingBuffer < Google::Bigquery::Property::Base
+      class TableStreamingbuffer < Google::Bigquery::Property::Base
         # Used for parsing Puppet catalog
         def unsafe_munge(value)
           self.class.unsafe_munge(value)
@@ -119,13 +119,13 @@ module Google
         # Used for parsing Puppet catalog
         def self.unsafe_munge(value)
           return if value.nil?
-          Data::TableStreamingBufferCatalog.new(value)
+          Data::TableStreamingbufferCatalog.new(value)
         end
 
         # Used for parsing GCP API responses
         def self.api_munge(value)
           return if value.nil?
-          Data::TableStreamingBufferApi.new(value)
+          Data::TableStreamingbufferApi.new(value)
         end
       end
     end

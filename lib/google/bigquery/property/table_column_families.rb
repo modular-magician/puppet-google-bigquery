@@ -32,7 +32,7 @@ module Google
   module Bigquery
     module Data
       # A class to manage data for ColumnFamilies for table.
-      class TableColumnFamilies
+      class TableColumnfamilies
         include Comparable
 
         attr_reader :columns
@@ -64,7 +64,7 @@ module Google
         end
 
         def ==(other)
-          return false unless other.is_a? TableColumnFamilies
+          return false unless other.is_a? TableColumnfamilies
           compare_fields(other).each do |compare|
             next if compare[:self].nil? || compare[:other].nil?
             return false if compare[:self] != compare[:other]
@@ -73,7 +73,7 @@ module Google
         end
 
         def <=>(other)
-          return false unless other.is_a? TableColumnFamilies
+          return false unless other.is_a? TableColumnfamilies
           compare_fields(other).each do |compare|
             next if compare[:self].nil? || compare[:other].nil?
             result = compare[:self] <=> compare[:other]
@@ -95,9 +95,9 @@ module Google
         end
       end
 
-      # Manages a TableColumnFamilies nested object
+      # Manages a TableColumnfamilies nested object
       # Data is coming from the GCP API
-      class TableColumnFamiliesApi < TableColumnFamilies
+      class TableColumnfamiliesApi < TableColumnfamilies
         def initialize(args)
           @columns = Google::Bigquery::Property::TableColumnsArray.api_munge(args['columns'])
           @encoding = Google::Bigquery::Property::Enum.api_munge(args['encoding'])
@@ -107,9 +107,9 @@ module Google
         end
       end
 
-      # Manages a TableColumnFamilies nested object
+      # Manages a TableColumnfamilies nested object
       # Data is coming from the Puppet manifest
-      class TableColumnFamiliesCatalog < TableColumnFamilies
+      class TableColumnfamiliesCatalog < TableColumnfamilies
         def initialize(args)
           @columns = Google::Bigquery::Property::TableColumnsArray.unsafe_munge(args['columns'])
           @encoding = Google::Bigquery::Property::Enum.unsafe_munge(args['encoding'])
@@ -123,7 +123,7 @@ module Google
 
     module Property
       # A class to manage input to ColumnFamilies for table.
-      class TableColumnFamilies < Google::Bigquery::Property::Base
+      class TableColumnfamilies < Google::Bigquery::Property::Base
         # Used for parsing Puppet catalog
         def unsafe_munge(value)
           self.class.unsafe_munge(value)
@@ -132,18 +132,18 @@ module Google
         # Used for parsing Puppet catalog
         def self.unsafe_munge(value)
           return if value.nil?
-          Data::TableColumnFamiliesCatalog.new(value)
+          Data::TableColumnfamiliesCatalog.new(value)
         end
 
         # Used for parsing GCP API responses
         def self.api_munge(value)
           return if value.nil?
-          Data::TableColumnFamiliesApi.new(value)
+          Data::TableColumnfamiliesApi.new(value)
         end
       end
 
       # A Puppet property that holds an integer
-      class TableColumnFamiliesArray < Google::Bigquery::Property::Array
+      class TableColumnfamiliesArray < Google::Bigquery::Property::Array
         # Used for parsing Puppet catalog
         def unsafe_munge(value)
           self.class.unsafe_munge(value)
@@ -152,17 +152,17 @@ module Google
         # Used for parsing Puppet catalog
         def self.unsafe_munge(value)
           return if value.nil?
-          return TableColumnFamilies.unsafe_munge(value) \
+          return TableColumnfamilies.unsafe_munge(value) \
             unless value.is_a?(::Array)
-          value.map { |v| TableColumnFamilies.unsafe_munge(v) }
+          value.map { |v| TableColumnfamilies.unsafe_munge(v) }
         end
 
         # Used for parsing GCP API responses
         def self.api_munge(value)
           return if value.nil?
-          return TableColumnFamilies.api_munge(value) \
+          return TableColumnfamilies.api_munge(value) \
             unless value.is_a?(::Array)
-          value.map { |v| TableColumnFamilies.api_munge(v) }
+          value.map { |v| TableColumnfamilies.api_munge(v) }
         end
       end
     end

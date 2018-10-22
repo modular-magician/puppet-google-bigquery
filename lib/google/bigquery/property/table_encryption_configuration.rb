@@ -31,7 +31,7 @@ module Google
   module Bigquery
     module Data
       # A class to manage data for EncryptionConfiguration for table.
-      class TableEncryptionConfiguration
+      class TableEncryptionconfiguration
         include Comparable
 
         attr_reader :kms_key_name
@@ -49,7 +49,7 @@ module Google
         end
 
         def ==(other)
-          return false unless other.is_a? TableEncryptionConfiguration
+          return false unless other.is_a? TableEncryptionconfiguration
           compare_fields(other).each do |compare|
             next if compare[:self].nil? || compare[:other].nil?
             return false if compare[:self] != compare[:other]
@@ -58,7 +58,7 @@ module Google
         end
 
         def <=>(other)
-          return false unless other.is_a? TableEncryptionConfiguration
+          return false unless other.is_a? TableEncryptionconfiguration
           compare_fields(other).each do |compare|
             next if compare[:self].nil? || compare[:other].nil?
             result = compare[:self] <=> compare[:other]
@@ -76,17 +76,17 @@ module Google
         end
       end
 
-      # Manages a TableEncryptionConfiguration nested object
+      # Manages a TableEncryptionconfiguration nested object
       # Data is coming from the GCP API
-      class TableEncryptionConfigurationApi < TableEncryptionConfiguration
+      class TableEncryptionconfigurationApi < TableEncryptionconfiguration
         def initialize(args)
           @kms_key_name = Google::Bigquery::Property::String.api_munge(args['kmsKeyName'])
         end
       end
 
-      # Manages a TableEncryptionConfiguration nested object
+      # Manages a TableEncryptionconfiguration nested object
       # Data is coming from the Puppet manifest
-      class TableEncryptionConfigurationCatalog < TableEncryptionConfiguration
+      class TableEncryptionconfigurationCatalog < TableEncryptionconfiguration
         def initialize(args)
           @kms_key_name = Google::Bigquery::Property::String.unsafe_munge(args['kms_key_name'])
         end
@@ -95,7 +95,7 @@ module Google
 
     module Property
       # A class to manage input to EncryptionConfiguration for table.
-      class TableEncryptionConfiguration < Google::Bigquery::Property::Base
+      class TableEncryptionconfiguration < Google::Bigquery::Property::Base
         # Used for parsing Puppet catalog
         def unsafe_munge(value)
           self.class.unsafe_munge(value)
@@ -104,13 +104,13 @@ module Google
         # Used for parsing Puppet catalog
         def self.unsafe_munge(value)
           return if value.nil?
-          Data::TableEncryptionConfigurationCatalog.new(value)
+          Data::TableEncryptionconfigurationCatalog.new(value)
         end
 
         # Used for parsing GCP API responses
         def self.api_munge(value)
           return if value.nil?
-          Data::TableEncryptionConfigurationApi.new(value)
+          Data::TableEncryptionconfigurationApi.new(value)
         end
       end
     end

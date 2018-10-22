@@ -31,7 +31,7 @@ module Google
   module Bigquery
     module Data
       # A class to manage data for GoogleSheetsOptions for table.
-      class TableGoogleSheetsOptions
+      class TableGooglesheetsoptions
         include Comparable
 
         attr_reader :skip_leading_rows
@@ -49,7 +49,7 @@ module Google
         end
 
         def ==(other)
-          return false unless other.is_a? TableGoogleSheetsOptions
+          return false unless other.is_a? TableGooglesheetsoptions
           compare_fields(other).each do |compare|
             next if compare[:self].nil? || compare[:other].nil?
             return false if compare[:self] != compare[:other]
@@ -58,7 +58,7 @@ module Google
         end
 
         def <=>(other)
-          return false unless other.is_a? TableGoogleSheetsOptions
+          return false unless other.is_a? TableGooglesheetsoptions
           compare_fields(other).each do |compare|
             next if compare[:self].nil? || compare[:other].nil?
             result = compare[:self] <=> compare[:other]
@@ -76,18 +76,18 @@ module Google
         end
       end
 
-      # Manages a TableGoogleSheetsOptions nested object
+      # Manages a TableGooglesheetsoptions nested object
       # Data is coming from the GCP API
-      class TableGoogleSheetsOptionsApi < TableGoogleSheetsOptions
+      class TableGooglesheetsoptionsApi < TableGooglesheetsoptions
         def initialize(args)
           @skip_leading_rows =
             Google::Bigquery::Property::Integer.api_munge(args['skipLeadingRows'])
         end
       end
 
-      # Manages a TableGoogleSheetsOptions nested object
+      # Manages a TableGooglesheetsoptions nested object
       # Data is coming from the Puppet manifest
-      class TableGoogleSheetsOptionsCatalog < TableGoogleSheetsOptions
+      class TableGooglesheetsoptionsCatalog < TableGooglesheetsoptions
         def initialize(args)
           @skip_leading_rows =
             Google::Bigquery::Property::Integer.unsafe_munge(args['skip_leading_rows'])
@@ -97,7 +97,7 @@ module Google
 
     module Property
       # A class to manage input to GoogleSheetsOptions for table.
-      class TableGoogleSheetsOptions < Google::Bigquery::Property::Base
+      class TableGooglesheetsoptions < Google::Bigquery::Property::Base
         # Used for parsing Puppet catalog
         def unsafe_munge(value)
           self.class.unsafe_munge(value)
@@ -106,13 +106,13 @@ module Google
         # Used for parsing Puppet catalog
         def self.unsafe_munge(value)
           return if value.nil?
-          Data::TableGoogleSheetsOptionsCatalog.new(value)
+          Data::TableGooglesheetsoptionsCatalog.new(value)
         end
 
         # Used for parsing GCP API responses
         def self.api_munge(value)
           return if value.nil?
-          Data::TableGoogleSheetsOptionsApi.new(value)
+          Data::TableGooglesheetsoptionsApi.new(value)
         end
       end
     end

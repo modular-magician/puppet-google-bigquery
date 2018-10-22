@@ -82,7 +82,7 @@ Puppet::Type.type(:gbigquery_table).provide(:google) do
   def self.fetch_to_hash(fetch)
     {
       table_reference:
-        Google::Bigquery::Property::TableTableReference.api_munge(fetch['tableReference']),
+        Google::Bigquery::Property::TableTablereference.api_munge(fetch['tableReference']),
       creation_time: Google::Bigquery::Property::Integer.api_munge(fetch['creationTime']),
       description: Google::Bigquery::Property::String.api_munge(fetch['description']),
       friendly_name: Google::Bigquery::Property::String.api_munge(fetch['friendlyName']),
@@ -96,16 +96,16 @@ Puppet::Type.type(:gbigquery_table).provide(:google) do
       type: Google::Bigquery::Property::Enum.api_munge(fetch['type']),
       view: Google::Bigquery::Property::TableView.api_munge(fetch['view']),
       time_partitioning:
-        Google::Bigquery::Property::TableTimePartitioning.api_munge(fetch['timePartitioning']),
+        Google::Bigquery::Property::TableTimepartitioning.api_munge(fetch['timePartitioning']),
       streaming_buffer:
-        Google::Bigquery::Property::TableStreamingBuffer.api_munge(fetch['streamingBuffer']),
+        Google::Bigquery::Property::TableStreamingbuffer.api_munge(fetch['streamingBuffer']),
       schema: Google::Bigquery::Property::TableSchema.api_munge(fetch['schema']),
-      encryption_configuration: Google::Bigquery::Property::TableEncryptionConfiguration.api_munge(
+      encryption_configuration: Google::Bigquery::Property::TableEncryptionconfiguration.api_munge(
         fetch['encryptionConfiguration']
       ),
       expiration_time: Google::Bigquery::Property::Integer.api_munge(fetch['expirationTime']),
       external_data_configuration:
-        Google::Bigquery::Property::TableExternalDataConfiguration.api_munge(
+        Google::Bigquery::Property::TableExternaldataconfiguration.api_munge(
           fetch['externalDataConfiguration']
         )
     }.reject { |_, v| v.nil? }

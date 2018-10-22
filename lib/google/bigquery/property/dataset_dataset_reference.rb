@@ -31,7 +31,7 @@ module Google
   module Bigquery
     module Data
       # A class to manage data for DatasetReference for dataset.
-      class DatasetDatasetReference
+      class DatasetDatasetreference
         include Comparable
 
         attr_reader :dataset_id
@@ -52,7 +52,7 @@ module Google
         end
 
         def ==(other)
-          return false unless other.is_a? DatasetDatasetReference
+          return false unless other.is_a? DatasetDatasetreference
           compare_fields(other).each do |compare|
             next if compare[:self].nil? || compare[:other].nil?
             return false if compare[:self] != compare[:other]
@@ -61,7 +61,7 @@ module Google
         end
 
         def <=>(other)
-          return false unless other.is_a? DatasetDatasetReference
+          return false unless other.is_a? DatasetDatasetreference
           compare_fields(other).each do |compare|
             next if compare[:self].nil? || compare[:other].nil?
             result = compare[:self] <=> compare[:other]
@@ -80,18 +80,18 @@ module Google
         end
       end
 
-      # Manages a DatasetDatasetReference nested object
+      # Manages a DatasetDatasetreference nested object
       # Data is coming from the GCP API
-      class DatasetDatasetReferenceApi < DatasetDatasetReference
+      class DatasetDatasetreferenceApi < DatasetDatasetreference
         def initialize(args)
           @dataset_id = Google::Bigquery::Property::String.api_munge(args['datasetId'])
           @project_id = Google::Bigquery::Property::String.api_munge(args['projectId'])
         end
       end
 
-      # Manages a DatasetDatasetReference nested object
+      # Manages a DatasetDatasetreference nested object
       # Data is coming from the Puppet manifest
-      class DatasetDatasetReferenceCatalog < DatasetDatasetReference
+      class DatasetDatasetreferenceCatalog < DatasetDatasetreference
         def initialize(args)
           @dataset_id = Google::Bigquery::Property::String.unsafe_munge(args['dataset_id'])
           @project_id = Google::Bigquery::Property::String.unsafe_munge(args['project_id'])
@@ -101,7 +101,7 @@ module Google
 
     module Property
       # A class to manage input to DatasetReference for dataset.
-      class DatasetDatasetReference < Google::Bigquery::Property::Base
+      class DatasetDatasetreference < Google::Bigquery::Property::Base
         # Used for parsing Puppet catalog
         def unsafe_munge(value)
           self.class.unsafe_munge(value)
@@ -110,13 +110,13 @@ module Google
         # Used for parsing Puppet catalog
         def self.unsafe_munge(value)
           return if value.nil?
-          Data::DatasetDatasetReferenceCatalog.new(value)
+          Data::DatasetDatasetreferenceCatalog.new(value)
         end
 
         # Used for parsing GCP API responses
         def self.api_munge(value)
           return if value.nil?
-          Data::DatasetDatasetReferenceApi.new(value)
+          Data::DatasetDatasetreferenceApi.new(value)
         end
       end
     end

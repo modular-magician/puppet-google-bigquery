@@ -31,7 +31,7 @@ module Google
   module Bigquery
     module Data
       # A class to manage data for CsvOptions for table.
-      class TableCsvOptions
+      class TableCsvoptions
         include Comparable
 
         attr_reader :allow_jagged_rows
@@ -64,7 +64,7 @@ module Google
         end
 
         def ==(other)
-          return false unless other.is_a? TableCsvOptions
+          return false unless other.is_a? TableCsvoptions
           compare_fields(other).each do |compare|
             next if compare[:self].nil? || compare[:other].nil?
             return false if compare[:self] != compare[:other]
@@ -73,7 +73,7 @@ module Google
         end
 
         def <=>(other)
-          return false unless other.is_a? TableCsvOptions
+          return false unless other.is_a? TableCsvoptions
           compare_fields(other).each do |compare|
             next if compare[:self].nil? || compare[:other].nil?
             result = compare[:self] <=> compare[:other]
@@ -96,9 +96,9 @@ module Google
         end
       end
 
-      # Manages a TableCsvOptions nested object
+      # Manages a TableCsvoptions nested object
       # Data is coming from the GCP API
-      class TableCsvOptionsApi < TableCsvOptions
+      class TableCsvoptionsApi < TableCsvoptions
         def initialize(args)
           @allow_jagged_rows =
             Google::Bigquery::Property::Boolean.api_munge(args['allowJaggedRows'])
@@ -112,9 +112,9 @@ module Google
         end
       end
 
-      # Manages a TableCsvOptions nested object
+      # Manages a TableCsvoptions nested object
       # Data is coming from the Puppet manifest
-      class TableCsvOptionsCatalog < TableCsvOptions
+      class TableCsvoptionsCatalog < TableCsvoptions
         def initialize(args)
           @allow_jagged_rows =
             Google::Bigquery::Property::Boolean.unsafe_munge(args['allow_jagged_rows'])
@@ -132,7 +132,7 @@ module Google
 
     module Property
       # A class to manage input to CsvOptions for table.
-      class TableCsvOptions < Google::Bigquery::Property::Base
+      class TableCsvoptions < Google::Bigquery::Property::Base
         # Used for parsing Puppet catalog
         def unsafe_munge(value)
           self.class.unsafe_munge(value)
@@ -141,13 +141,13 @@ module Google
         # Used for parsing Puppet catalog
         def self.unsafe_munge(value)
           return if value.nil?
-          Data::TableCsvOptionsCatalog.new(value)
+          Data::TableCsvoptionsCatalog.new(value)
         end
 
         # Used for parsing GCP API responses
         def self.api_munge(value)
           return if value.nil?
-          Data::TableCsvOptionsApi.new(value)
+          Data::TableCsvoptionsApi.new(value)
         end
       end
     end

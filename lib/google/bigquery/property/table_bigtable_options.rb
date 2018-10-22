@@ -31,7 +31,7 @@ module Google
   module Bigquery
     module Data
       # A class to manage data for BigtableOptions for table.
-      class TableBigtableOptions
+      class TableBigtableoptions
         include Comparable
 
         attr_reader :ignore_unspecified_column_families
@@ -57,7 +57,7 @@ module Google
         end
 
         def ==(other)
-          return false unless other.is_a? TableBigtableOptions
+          return false unless other.is_a? TableBigtableoptions
           compare_fields(other).each do |compare|
             next if compare[:self].nil? || compare[:other].nil?
             return false if compare[:self] != compare[:other]
@@ -66,7 +66,7 @@ module Google
         end
 
         def <=>(other)
-          return false unless other.is_a? TableBigtableOptions
+          return false unless other.is_a? TableBigtableoptions
           compare_fields(other).each do |compare|
             next if compare[:self].nil? || compare[:other].nil?
             result = compare[:self] <=> compare[:other]
@@ -89,29 +89,29 @@ module Google
         end
       end
 
-      # Manages a TableBigtableOptions nested object
+      # Manages a TableBigtableoptions nested object
       # Data is coming from the GCP API
-      class TableBigtableOptionsApi < TableBigtableOptions
+      class TableBigtableoptionsApi < TableBigtableoptions
         def initialize(args)
           @ignore_unspecified_column_families =
             Google::Bigquery::Property::Boolean.api_munge(args['ignoreUnspecifiedColumnFamilies'])
           @read_rowkey_as_string =
             Google::Bigquery::Property::Boolean.api_munge(args['readRowkeyAsString'])
           @column_families =
-            Google::Bigquery::Property::TableColumnFamiliesArray.api_munge(args['columnFamilies'])
+            Google::Bigquery::Property::TableColumnfamiliesArray.api_munge(args['columnFamilies'])
         end
       end
 
-      # Manages a TableBigtableOptions nested object
+      # Manages a TableBigtableoptions nested object
       # Data is coming from the Puppet manifest
-      class TableBigtableOptionsCatalog < TableBigtableOptions
+      class TableBigtableoptionsCatalog < TableBigtableoptions
         def initialize(args)
           @ignore_unspecified_column_families = Google::Bigquery::Property::Boolean.unsafe_munge(
             args['ignore_unspecified_column_families']
           )
           @read_rowkey_as_string =
             Google::Bigquery::Property::Boolean.unsafe_munge(args['read_rowkey_as_string'])
-          @column_families = Google::Bigquery::Property::TableColumnFamiliesArray.unsafe_munge(
+          @column_families = Google::Bigquery::Property::TableColumnfamiliesArray.unsafe_munge(
             args['column_families']
           )
         end
@@ -120,7 +120,7 @@ module Google
 
     module Property
       # A class to manage input to BigtableOptions for table.
-      class TableBigtableOptions < Google::Bigquery::Property::Base
+      class TableBigtableoptions < Google::Bigquery::Property::Base
         # Used for parsing Puppet catalog
         def unsafe_munge(value)
           self.class.unsafe_munge(value)
@@ -129,13 +129,13 @@ module Google
         # Used for parsing Puppet catalog
         def self.unsafe_munge(value)
           return if value.nil?
-          Data::TableBigtableOptionsCatalog.new(value)
+          Data::TableBigtableoptionsCatalog.new(value)
         end
 
         # Used for parsing GCP API responses
         def self.api_munge(value)
           return if value.nil?
-          Data::TableBigtableOptionsApi.new(value)
+          Data::TableBigtableoptionsApi.new(value)
         end
       end
     end
